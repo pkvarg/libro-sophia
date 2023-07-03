@@ -1,9 +1,9 @@
 'use client'
 import React, { useCallback, useState } from 'react'
-import useLoginModal from '@/app/hooks/useLoginModal'
-import Input from '../Input'
-import Modal from '../Modal'
-import useRegisterModal from '@/app/hooks/useRegisterModal'
+import useLoginModal from '@/hooks/useLoginModal'
+import Input from '../../components/Input'
+import Modal from '../../components/Modal'
+import useRegisterModal from '@/hooks/useRegisterModal'
 
 const LoginModal = () => {
   const loginModal = useLoginModal()
@@ -15,6 +15,11 @@ const LoginModal = () => {
   const [name, setName] = useState('')
 
   const [isLoading, setIsLoading] = useState(false)
+
+  const onToggle = useCallback(() => {
+    loginModal.onClose()
+    registerModal.onOpen()
+  }, [loginModal, registerModal])
 
   const onSubmit = useCallback(async () => {
     try {
@@ -53,6 +58,25 @@ const LoginModal = () => {
     </div>
   )
 
+  const footerContent = (
+    <div className='text-neutral-400 text-center mt-4'>
+      <p>
+        Ste tu prvý krát?
+        <span
+          onClick={onToggle}
+          className='
+            text-white 
+            cursor-pointer 
+            hover:underline
+          '
+        >
+          {' '}
+          Vytvoriť účet
+        </span>
+      </p>
+    </div>
+  )
+
   return (
     <Modal
       disabled={isLoading}
@@ -62,7 +86,7 @@ const LoginModal = () => {
       onClose={loginModal.onClose}
       onSubmit={onSubmit}
       body={bodyContent}
-      // footer={footerContent}
+      footer={footerContent}
     />
   )
 }

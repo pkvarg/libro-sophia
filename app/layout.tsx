@@ -1,9 +1,9 @@
 import './globals.css'
-import Sidebar from './components/layout/Sidebar'
-import FollowBar from './components/layout/FollowBar'
+import Sidebar from '../components/layout/Sidebar'
+import FollowBar from '../components/layout/FollowBar'
 import Modal from './components/Modal'
-import LoginModal from './components/modals/LoginModal'
-import RegisterModal from './components/modals/RegisterModal'
+import LoginModal from '../components/modals/LoginModal'
+import RegisterModal from '../components/modals/RegisterModal'
 
 // import { Inter } from 'next/font/google'
 
